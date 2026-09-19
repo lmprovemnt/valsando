@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valsando - Checkout</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">Valsando</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Sobre Nosotros</a></li>
+    <li><a href="products.html">Productos</a></li>
+    <li><a href="index.html#contact">Contacto</a></li>
+    <li class="cart-container">
+      <a href="cart.html" id="cart-btn" aria-label="Ver carrito" class="cart-link">
+        🛒 <span id="cart-count" class="cart-count">0</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <section class="section" style="max-width:900px; margin: 2rem auto;">
+
+    <h1>Finalizar Compra</h1>
+
+    <form id="checkout-form">
+      <h2>Información del Comprador</h2>
+
+      <label for="name">Nombre completo</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Teléfono</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9+\-\s]{7,15}" />
+
+      <h2>Dirección de Domicilio</h2>
+
+      <label for="address">Dirección completa</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="city">Ciudad</label>
+      <input type="text" id="city" name="city" required />
+
+      <label for="postalCode">Código postal</label>
+      <input type="text" id="postalCode" name="postalCode" required />
+
+      <h2>Método de Pago</h2>
+
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="">Selecciona método de pago</option>
+        <option value="tarjeta">Tarjeta de crédito/débito</option>
+        <option value="paypal">PayPal</option>
+        <option value="transferencia">Transferencia bancaria</option>
+      </select>
+
+      <button type="submit" id="pay-btn" class="pay-btn">Finalizar Compra</button>
+    </form>
+
+    <div id="payment-message" class="response"></div>
+
+  </section>
+</main>
+
+<script src="js/cart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    updateCartUI();
+
+    const checkoutForm = document.getElementById("checkout-form");
+    const payBtn = document.getElementById("pay-btn");
+    const paymentMessage = document.getElementById("payment-message");
+
+    checkoutForm.addEventListener("submit", e => {
+      e.preventDefault();
+
+      if(!checkoutForm.checkValidity()){
+        alert("Por favor completa todos los campos correctamente.");
+        return;
+      }
+
+      paymentMessage.textContent = "Procesando pago... (simulado)";
+      payBtn.disabled = true;
+
+      setTimeout(() => {
+        // Vaciar carrito
+        cart = [];
+        saveCart();
+        updateCartUI();
+
+        paymentMessage.textContent = "¡Compra realizada con éxito! Gracias por confiar en Valsando.";
+        checkoutForm.reset();
+        payBtn.disabled = false;
+      }, 3000);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valsando - Contacto</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-container">
+    <a href="index.html" class="logo" aria-label="Valsando">Valsando</a>
+    <nav class="nav-menu" role="navigation" aria-label="Menú principal">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="products.html" class="nav-link">Productos</a></li>
+        <li><a href="contact.html" class="nav-link active">Contacto</a></li>
+      </ul>
+    </nav>
+    <button id="cart-btn" class="cart-button" aria-label="Carrito de compras">
+      🛒 <span id="cart-count" class="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<main class="contacto-section">
+  <div class="container">
+    <h2>Contacto</h2>
+    <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+    <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+    <p><strong>Email:</strong> contacto@valsando.com</p>
+
+    <form id="contact-form" class="contact-form" aria-label="Formulario de contacto">
+      <input type="text" id="contact-name" placeholder="Nombre completo" required />
+      <input type="email" id="contact-email" placeholder="Correo electrónico" required />
+      <textarea id="contact-message" placeholder="Tu mensaje..." rows="4" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+      <p id="contact-response" class="response" role="alert" aria-live="assertive"></p>
+    </form>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Valsando. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/cart.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/navbar.js"></script>
+
+</body>
+</html>
